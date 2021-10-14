@@ -16,6 +16,12 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
+    def update_profile(cls, id):
+        Profile.objects.get(user_id=id)
+    
+    @classmethod
+    def search_profile(cls, name):
+        return cls.objects.filter(user__username__icontains=name).all()
 
 
 
@@ -34,6 +40,18 @@ class Image(models.Model):
     
     def delete_image(self):
         return self.delete()
+
+    @classmethod
+    def search_post(cls, name):
+        return cls.objects.filter(image_name__image__name__icontains=name)
+    
+    @classmethod
+    def get_picture_by_id(cls, picture_id):
+        picture = cls.objects.get(id=picture_id)
+        return picture
+        
+    def add_likes(self):
+        return self.likes.count()
 
 
 class Comment(models.Model):
