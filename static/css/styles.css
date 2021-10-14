@@ -1,3 +1,18 @@
+
+.navbar{
+    background-color:#181833;
+    padding:10px;
+    color:#f5deb3;
+}
+
 h2{
-    color:red;
+    color:tomato;
+}
+
+
+
+.page-footer{
+    background-color: #181833;
+    padding: 20px;
+    color:#f5deb3;
 }

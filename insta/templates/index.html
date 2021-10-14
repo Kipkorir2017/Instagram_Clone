@@ -1,13 +1,30 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
+<div class="container">
+    <div id="overlay" class="row">
 
-<div id="overlay" class="row">
-
-    <div class="introduction">
-        <h2 class="text-center"> Check your uploaded photos and photos of people you follow</h2>
-        <hr>
-        <p id="about" class="text-center" style="font-size:20px;font-weight:bold;"></p>
+        <div class="introduction">
+            
+                <h2 class="text-center">Instragram Clone</h2>
+                
+                <hr>
+            <p class="text-center"> Look at our amazing application just take a moment, create your account and upload
+                your favorite pictures and view the profiles of the people you follow with their interesting pictures
+            </p>
+            
+            <p id="about" class="text-center" style="font-size:20px;font-weight:bold;"></p>
+        </div>
     </div>
 </div>
+<div>
+    <footer class="page-footer">
+        <div style=" font-size:12pt;">
+            <div class="footer-copyright py-3" style="padding-left: 42%;">&#169;Copyright 2021: Benjamin Kipkorir
+            </div>
+        </div>
+    </footer>
+</div>
+
+
 {%endblock%}
