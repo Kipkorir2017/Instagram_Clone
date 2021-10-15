@@ -10,20 +10,20 @@ def display_home(request):
 
 
 def new_post(request):
-    # current_user = request.user
-    # profile = Profile.objects.get(user = current_user)
-    # if request.method == 'POST':
-    #     form = NewPostForm(request.POST, request.FILES)        
-    #     if form.is_valid():
-    #         image=form.cleaned_data.get('image')
-    #         caption=form.cleaned_data.get('caption')
-    #         post = Image(image = image,image_caption= caption, image_profile=profile)
-    #         post.save()  
-    #     else:
-    #         print(form.errors)
-    #     return redirect('index')
-    # else:
-    #     form = NewPostForm()
+    current_user = request.user
+    profile = Profile.objects.get(user = current_user)
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)        
+        if form.is_valid():
+            image=form.cleaned_data.get('image')
+            caption=form.cleaned_data.get('caption')
+            post = Image(image = image,image_caption= caption, image_profile=profile)
+            post.save()  
+        else:
+            print(form.errors)
+        return redirect('index')
+    else:
+        form = NewPostForm()
 
     return render(request, 'newpost.html')
 
@@ -46,3 +46,16 @@ def add_comment(request,id):
         form = CommentForm()
 
     return render(request,'comments.html',{"form":form,"images":images,"comments":post_comment})
+
+
+def search(request): 
+    if 'profile' in request.GET and request.GET['profile']:
+        user = request.GET.get("profile")
+
+        print(user)
+        results = Profile.search_profile(user)
+        message = f'profile'
+        return render(request, 'search.html',{'profiles': results,'message': message})
+    else:
+        message = "You haven't searched for anything,try again"
+    return render(request, 'search.html', {'message': message})
