@@ -16,16 +16,17 @@ class UpdateUserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email')
 
-class  NewPostForm(forms.ModelForm):
-    class Meta:
-        model = Image
-        exclude = ['profile', 'likes','comments']
-
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio']
 
+
+
+class  NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = ['profile', 'likes','comments']
         
 class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
