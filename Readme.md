@@ -10,8 +10,8 @@ It is simple instragram clone app which resembles instagram app, build using Dja
 
 ## Admin Dashboard
 Login credentials 
-username :  BenTec
-password : Benja312!!
+* username :  BenTec
+* password : Benja312!!
 
 ## User Story
 User can signup & signin to the application
