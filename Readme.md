@@ -25,12 +25,13 @@ When user clicks on a single photo it expands it and user is able to view the de
 ## Software Requirements and Installation
 You need the following to start working on this project: 
 
-Python3.8
-Django
-Pip
-Virtual Environment(venv)
-A text editor
-Development Installation
+1. Python3.8
+2. Django
+3. Pip
+4. Virtual Environment(venv)
+5. A text editor
+
+## Development Installation
 To get the code..
 
 Clone the repository: git clone https://github.com/Kipkorir2017/Instagram_Clone.git
