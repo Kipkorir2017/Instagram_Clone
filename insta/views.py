@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from insta.models import Comment, Image, Profile
 from insta.forms import CommentForm, NewPostForm, SignUpForm, UpdateProfileForm, UpdateUserForm
 from django.http.response import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def display_home(request):
 
@@ -31,7 +32,7 @@ def new_post(request):
 
     return render(request, 'newpost.html')
 
-
+@login_required(login_url='/accounts/login/')
 def add_comment(request,id):
     post_comment = Comment.objects.filter(post= id)
     images = Image.objects.filter(id=id).all()
