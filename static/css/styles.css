@@ -1,4 +1,10 @@
 
+.img {
+    max-width: 50%;
+    height: 50%;
+    margin: 0 auto;
+}
+
 .navbar{
     background-color:#181833;
     padding:10px;

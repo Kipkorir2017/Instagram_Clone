@@ -4,7 +4,11 @@ from insta.forms import CommentForm, NewPostForm, SignUpForm, UpdateProfileForm,
 from django.http.response import HttpResponse, HttpResponseRedirect
 # Create your views here.
 def display_home(request):
-    return render(request, "index.html",)
+
+    posts = Image.objects.all()
+    profile = Profile.objects.all()
+    comment = Comment.objects.all()
+    return render(request,'index.html',{"posts":posts,"profile":profile,"comment":comment})
 
 
 
@@ -46,6 +50,13 @@ def add_comment(request,id):
         form = CommentForm()
 
     return render(request,'comments.html',{"form":form,"images":images,"comments":post_comment})
+
+def show_profile(request):
+    current_user= request.user
+    images= Image.objects.filter(profile=current_user.id).all
+
+    return render(request, 'registration/profile.html',{"images":images} )
+
 
 
 def search(request): 
