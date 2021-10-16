@@ -84,16 +84,16 @@
         </div>
         <div class="col-md-6">
             <div class="showprofile">
-                <h2 style="font-weight: bold;">Profile</h2>
+                <h2 style="font-weight: bold;color:blue">Profile</h2>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="image">
                             <div class="profile" class="rounded-circle">
-                                <img src="{{user.profile.profile_picture.url }}" alt="profile image">
+                                <img src="{{user.profile.profile_picture.url }}" alt="profile image" height="100px" style="border-radius: 45%;">
                             </div>
                         </div>
-                    </div>
+                    </div> &nbsp;
                     <div class="col-md-8">
                         <h3 style="font-weight: 700;"><a href="{% url 'profile' %}">{{user.username}}</a></h3>
                         <b>{{user.profile.bio}}</b>
@@ -104,10 +104,10 @@
             <div>
                 <div class="row">
                     <div class="col-md-6">
-                        <b style="font-size:10pt;">Following </b>
+                        <b style="font-size:10pt;">Following{{foll.following}} </b>
                     </div>
                     <div class="col-md-6">
-                        <b style="font-size:10pt;">Followers </b>
+                        <b style="font-size:10pt;">Followers {{foll.followers}}</b>
 
                     </div>
                 </div>
