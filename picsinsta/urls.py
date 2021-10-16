@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import include,url
+from django.contrib.auth import views 
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('',include('insta.urls')),
+    url(r'accounts/', include('registration.backends.simple.urls')),
+    url(r'logout/', views.LogoutView.as_view(), {"next_page": 'accounts/login'})
 ]

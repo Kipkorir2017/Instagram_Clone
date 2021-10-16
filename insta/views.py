@@ -97,7 +97,7 @@ def update_profile(request,id):
     
     return render(request, "registration/updateprofile.html", {"form":form, "form2":form2})
 
-
+@login_required(login_url='/accounts/login/')
 def search(request): 
     if 'profile' in request.GET and request.GET['profile']:
         user = request.GET.get("profile")

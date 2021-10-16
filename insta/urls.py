@@ -8,7 +8,10 @@ urlpatterns=[
     url('^posts/',views.new_post, name='post'),
     url('comment/<id>', views.add_comment, name='comment'),
     url('search/', views.search, name='search'),
-    url('profile',views.show_profile, name='profile'),
+    url('profile/',views.show_profile, name='profile'),
+    url('update/<id>', views.update_profile, name='update_profile'),
+    url('signup/', views.signup, name='signup'),
+
 ]
 
 if settings.DEBUG:
