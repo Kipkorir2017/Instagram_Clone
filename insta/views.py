@@ -3,7 +3,11 @@ from insta.models import Comment, Image, Profile
 from insta.forms import CommentForm, NewPostForm, SignUpForm, UpdateProfileForm, UpdateUserForm
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.mail import EmailMultiAlternatives, send_mail
+from django.conf import settings
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def display_home(request):
 
     posts = Image.objects.all()
@@ -12,8 +16,28 @@ def display_home(request):
     return render(request,'index.html',{"posts":posts,"profile":profile,"comment":comment})
 
 
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = request.POST['username']
+            password = request.POST['password']
+            email = request.POST['email']
+
+            user = User.objects.create_user(username=username, email=email,password=password)
+            subject = 'welcome to IC page'
+            message = f'Hi {user.username}, thank you for registering in instagram clone.'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [user.email, ]
+            send_mail( subject, message, email_from, recipient_list )
+            return HttpResponse('Thank you for registering with us')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
     profile = Profile.objects.get(user = current_user)
@@ -58,6 +82,20 @@ def show_profile(request):
 
     return render(request, 'registration/profile.html',{"images":images} )
 
+
+@login_required(login_url='/accounts/login/')    
+def update_profile(request,id):
+    
+    obj = get_object_or_404(Profile,user_id=id)
+    obj2 = get_object_or_404(User,id=id)
+    form = UpdateProfileForm(request.POST or None, instance = obj)
+    form2 = UpdateUserForm(request.POST or None, instance = obj2)
+    if form.is_valid() and form2.is_valid():
+        form.save()
+        form2.save()
+        return HttpResponseRedirect("/profile")
+    
+    return render(request, "registration/updateprofile.html", {"form":form, "form2":form2})
 
 
 def search(request): 
