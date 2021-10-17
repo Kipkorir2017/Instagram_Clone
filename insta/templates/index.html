@@ -17,17 +17,16 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-md-6">
             {% for img in posts %}
             <div class="row">
                 <div class="col-md-12 showpost">
                     <div class="card" style="width: 100%; height: 100%;">
-                        <div class="img-profile">
+                        <div class="img">
                             <a href="#{{img.id}}" data-toggle="modal" data-target="#{{img.id}}">
-                                <img class="card-img-top"  src="{{img.image.url}}" class="img-responsive"
-                                    alt="{{image.image_name}}" >
+                                <img class="card-img-top" src="{{img.image.url}}" class="img-responsive"
+                                    alt="{{image.image_name}}">
                             </a>
                         </div>
                         <div class="col-lg-3">
@@ -36,13 +35,14 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h5 class="modal-title">{{img.image_name}}</h5>
+                                            <h4 class="modal-title">{{img.image_name}}</h4>
                                             <img src="{{img.image.url}}" class="img-responsive" alt="Image"
                                                 style="width:100%;max-width:100%">
                                         </div>
                                         <div class="modal-body">
                                             <p class="text-justify">{{img.caption}}</p>
                                             <p class="text-left"><b>Likes:</b> {{img.likes}}</p>
+                                            <p class="text-left"><b>Posted on:</b></p>
 
                                         </div>
                                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 padding-1">
@@ -65,11 +65,11 @@
                             <img src="https://img.icons8.com/material-outlined/24/000000/speech-bubble--v2.png" />
                             <img src="https://img.icons8.com/windows/32/000000/filled-sent.png" />
 
-                            <h5 class="card-title"><span class="" style="font-weight: 700;">{{img.image_profile}}</span>
+                            <h5 class="card-title"><span class="" style="font-weight: bold;">{{img.image_profile}}</span>
                                 {{img.image_caption}}
                             </h5>
                             <a href="{%url 'comment' img.id %}" class="pl-3">
-                                Check comments
+                                View comments
                             </a>
                             <br>
                             <br>
@@ -84,16 +84,16 @@
         </div>
         <div class="col-md-6">
             <div class="showprofile">
-                <h2 style="font-weight: bold;color:#262650">Profile</h2>
+                <h1 style="font-weight: 900;">Profile</h1>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="image">
-                            <div class="profile" class="rounded-circle">
-                                <img src="{{user.profile.profile_picture.url }}" alt="profile image" height="100px" style="border-radius: 45%;">
+                        <div class="img">
+                            <div class="profile_pic" class="rounded-circle">
+                                <img src="{{user.profile.profile_picture.url }}" alt="profile_photo">
                             </div>
                         </div>
-                    </div> &nbsp;
+                    </div>
                     <div class="col-md-8">
                         <h3 style="font-weight: 700;"><a href="{% url 'profile' %}">{{user.username}}</a></h3>
                         <b>{{user.profile.bio}}</b>
@@ -104,10 +104,10 @@
             <div>
                 <div class="row">
                     <div class="col-md-6">
-                        <b style="font-size:10pt;">Following{{img.following}} </b>
+                        <b style="font-size:11pt;">Following{{img.following}} </b>
                     </div>
                     <div class="col-md-6">
-                        <b style="font-size:10pt;">Followers {{img.followers}}</b>
+                        <b style="font-size:11pt;">Followers{{img.followers}} </b>
 
                     </div>
                 </div>
@@ -117,7 +117,7 @@
             <div>
                 <div class="row">
                     <div class="col-md-6">
-                        <b style="font-size:16pt; color:tomato">Write New Post </b>
+                        <b style="font-size:15pt; color:tomato">Write New Post </b>
                     </div>
                     <div class="col-md-6">
                         <a class="btn btn-success newpost" href="{% url 'post' %}"><img
@@ -129,6 +129,7 @@
 
         </div>
     </div>
+   
 
 
 </div>
