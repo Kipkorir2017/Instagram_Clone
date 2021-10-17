@@ -34,7 +34,7 @@ def signup(request):
             return HttpResponse('Thank you for registering with us')
     else:
         form = SignUpForm()
-    return render(request, 'registration.html', {'form': form})
+    return render(request, 'registration_form.html', {'form': form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -78,7 +78,7 @@ def add_comment(request,id):
 
 def show_profile(request):
     current_user= request.user
-    images= Image.objects.filter(profile=current_user.id).all
+    images= Image.objects.filter(image_profile=current_user.id).all
 
     return render(request, 'registration/profile.html',{"images":images} )
 
@@ -86,16 +86,16 @@ def show_profile(request):
 @login_required(login_url='/accounts/login/')    
 def update_profile(request,id):
     
-    obj = get_object_or_404(Profile,user_id=id)
-    obj2 = get_object_or_404(User,id=id)
-    form = UpdateProfileForm(request.POST or None, instance = obj)
-    form2 = UpdateUserForm(request.POST or None, instance = obj2)
+    object1 = get_object_or_404(Profile,user_id=id)
+    object2 = get_object_or_404(User,id=id)
+    form = UpdateProfileForm(request.POST or None, instance = object1)
+    form2 = UpdateUserForm(request.POST or None, instance = object2)
     if form.is_valid() and form2.is_valid():
         form.save()
         form2.save()
         return HttpResponseRedirect("/profile")
     
-    return render(request, "registration/updateprofile.html", {"form":form, "form2":form2})
+    return render(request, "registration/update_profile.html", {"form":form, "form2":form2})
 
 @login_required(login_url='/accounts/login/')
 def search(request): 
