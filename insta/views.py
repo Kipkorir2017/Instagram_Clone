@@ -40,6 +40,7 @@ def signup(request):
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
+    profile=request.GET.get('profile')
     profile = Profile.objects.get(user = current_user)
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)        
