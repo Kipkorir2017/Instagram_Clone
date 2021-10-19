@@ -110,3 +110,15 @@ def search(request):
     else:
         message = "You haven't searched for anything,try again"
     return render(request, 'search.html', {'message': message})
+
+
+# def image_likes(request,id):
+#     image =  Image.get_single_photo(id)
+#     user = request.user
+#     user_id = user.id
+    
+#     if user.is_authenticated:
+    
+#         image.save()
+        
+#     return redirect('index')

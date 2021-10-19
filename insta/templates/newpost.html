@@ -3,7 +3,7 @@
 {% block content %}
 <br><br>
 <div class="container">
-    <h4 class="text-center">Add a new post</h4>
+    <h4 class="text-center" style="color:tomato;">create a new post</h4>
     <hr>
     <div class="row">
         <div class="col-md-6">
@@ -17,7 +17,7 @@
                         {% csrf_token %}
                         {% bootstrap_form form %}
                         <div class="form-group">
-                            <input type="submit" class="btn btn-info col-md-12" value="Post">
+                            <input type="submit" class="btn btn-success col-md-12" value="Post">
                         </div>
                         <input type="hidden" name="next" value="{{next}}">
                     </form>
