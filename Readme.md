@@ -6,7 +6,7 @@
 It is simple instragram clone app which resembles instagram app, build using Django.  Where a user can upload their images, posts and also view posts added by other people.
 
 ## Live Link
-  <a href="">View</a>
+  <a href="https://instabenja.herokuapp.com/">View</a>
 
 ## Admin Dashboard
 Login credentials 
@@ -63,6 +63,6 @@ There are no known bugs
 please email me at [pkobenj41@gmail.com]
 
 ## License
-License: <a href="">MIT</a>
+License: <a href="https://github.com/Kipkorir2017/Instagram_Clone/blob/master/License">MIT</a>
 
 Copyright &#169; 2021 Benjamin Kipkorir
